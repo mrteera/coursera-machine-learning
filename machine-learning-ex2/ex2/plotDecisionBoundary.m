@@ -13,10 +13,16 @@ plotData(X(:,2:3), y);
 hold on
 
 if size(X, 2) <= 3
+    % https://www.coursera.org/learn/machine-learning/discussions/weeks/3/threads/HAEss7C7EeWoGg6ulZMPEw
     % Only need 2 points to define a line, so choose two endpoints
+    % pick min x1 and max x1
     plot_x = [min(X(:,2))-2,  max(X(:,2))+2];
 
     % Calculate the decision boundary line
+    % Now, by definition, the decision boundary is the locus of points where h = 0.5, or equivalently (X * theta) = 0, since the sigmoid(0) is 0.5.
+    % 0 = x0theta0 + x1theta1 + x2theta2
+    % x2 = -(theta0 + x1theta1)/theta2
+    % Find x2
     plot_y = (-1./theta(3)).*(theta(2).*plot_x + theta(1));
 
     % Plot, and adjust axes for better viewing
